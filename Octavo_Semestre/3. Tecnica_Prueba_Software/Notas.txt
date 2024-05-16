@@ -1,0 +1,3 @@
+git remote origin https://github.com/Juanfhcvvdbcb/HeavyMetal.git
+git branch -m OctavoTrimestre
+git push -u origin OctavoTrimestre
