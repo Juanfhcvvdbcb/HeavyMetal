@@ -1,0 +1,55 @@
+<div class="form-container">
+  <form (ngSubmit)="onSubmit()" >
+
+
+    <div class="form-group">
+      <label for="ciudad">Ciudad</label>
+      <select id="ciudad" formControlName="ciudad" required>
+        <option value="" disabled selected>Seleccione una ciudad</option>
+        <option *ngFor="let ciudad of Ciudades" [value]="ciudad.ID_Ciudad">{{ ciudad.nombre_ciudad }}</option>
+        <!-- Opciones de ciudades -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" formControlName="direccion"  placeholder="Ingrese su dirección" required>
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input type="text" id="telefono" formControlName="telefono" placeholder="Ingrese su teléfono" required>
+    </div>
+
+    <div class="form-group">
+      <label for="medioPago">Medio de Pago</label>
+      <select id="medioPago" formControlName="medioPago"  required>
+        <option value="" disabled selected>Seleccione un medio de pago</option>
+        <option *ngFor="let medioPago of medioPagos" [value]="medioPago.id_mediopago">{{ medioPago.descripcion }}</option>
+        <!-- Opciones de medios de pago -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Total de la Compra</label>
+      <output>{{ totalCompra | currency }}</output>
+    </div>
+
+    <div class="form-group">
+      <label>Fecha de Entrega</label>
+      <output>{{ fechaEntrega | date:'fullDate' }}</output>
+    </div>
+
+    <div class="form-group">
+      <label for="observacionesCliente">Observaciones Cliente</label>
+      <textarea id="observacionesCliente" formControlName="observacionesCliente"  placeholder="Ingrese sus observaciones"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Valor Domicilio</label>
+      <output>$8000</output>
+    </div>
+
+    <button type="submit" class="btn-comprar">Comprar</button>
+  </form>
+</div>

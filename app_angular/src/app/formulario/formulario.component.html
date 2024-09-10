@@ -1,0 +1,15 @@
+<p><input type="text" name="" #name></p>&nbsp;
+<button (click)="mostrarConsola(name.value)">Consola</button>
+<br>
+<div class="alert alert-success" *ngIf="msg; else mensaje">
+    <ng-template #mensaje>
+        <div class="alert alert-warning">Mensaje inicial</div>
+    </ng-template>
+    <div class="row">
+        <div class="col-lg-11">Envio exitoso
+            <div class="col-lg-1">
+                <button class="btn-btn-danger" (click)="msg = false">X</button>
+                
+            </div>
+        </div>
+</div>

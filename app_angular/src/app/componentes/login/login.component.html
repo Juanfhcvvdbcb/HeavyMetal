@@ -1,0 +1,23 @@
+<form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+  <div *ngIf="errorVisible" class="error-message">
+    <span>Credenciales no encontradas</span>
+    <button type="button" (click)="closeError()">x</button>
+  </div>
+  <h2>Iniciar Sesión</h2>
+  
+  <label for="identificacion">Identificación</label>
+  <input type="number" id="identificacion" name="identificacion" formControlName="identificacion" placeholder="Ingrese su identificación" required>
+
+  <label for="password">Contraseña</label>
+  <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required formControlName="password">
+
+  <button type="submit">Iniciar Sesión</button>
+
+  <div class="links">
+    <a href="#">Olvidé Contraseña</a>
+    <span>|</span>
+    <a routerLink="/registro">No tengo cuenta</a>
+  </div>
+</form>
+<router-outlet></router-outlet>
+

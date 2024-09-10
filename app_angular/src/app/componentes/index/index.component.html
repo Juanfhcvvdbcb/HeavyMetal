@@ -1,0 +1,15 @@
+
+
+<div class="card-container">
+    <div class="card" *ngFor="let producto of productos">
+      <img src="https://via.placeholder.com/150" alt="Imagen del producto">
+      <div class="card-content">
+        <h2>{{ producto.nombre_producto }}</h2>
+        <p>{{ producto.descripcion_producto }}</p>
+        <p class="price">{{ producto.precio }}</p>
+        <button class="btn" >Ver detalle</button>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  

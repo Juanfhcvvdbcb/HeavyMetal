@@ -1,0 +1,24 @@
+<nav class="header">
+  <div class="header-left">
+    <!-- Puedes agregar más elementos aquí si lo deseas -->
+  </div>
+  <div class="header-center">
+    <form (submit)="onSearch($event)">
+      <input type="text" class="search-bar" placeholder="¿Qué producto deseas buscar?" [(ngModel)]="searchTerm" name="searchTerm">
+      <button type="submit" class="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
+  <div class="header-right">
+    <a [routerLink]="['/index', userId]">
+      <h1>Heavy Metal</h1>
+    </a>
+    <button class="btn" (click)="goToProducto()">Productos</button>
+    <button class="btn" (click)="logout()">Cerrar sesión</button>
+    <button class="cart-btn" (click)="goToCarrito()">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <i *ngIf="hasActiveCart" class="fa-solid fa-circle-exclamation cart-exclamation"></i>
+    </button>
+  </div>
+</nav>

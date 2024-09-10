@@ -1,0 +1,150 @@
+
+
+  <div class="container mt-5">
+    <div class="row product-panel">
+      <!-- Columna de Filtro -->
+      <div class="col-md-3 filter-column">
+        <h5>Filtrar productos</h5>
+        <form>
+          <div class="mb-3">
+            <label for="precio">Precio:</label>
+            <select class="form-select" id="precio">
+              <option value="menor">Menor a Mayor</option>
+              <option value="mayor">Mayor a Menor</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="marca">Marca:</label>
+            <select class="form-select" id="marca">
+              <option value="marca1">Marca 1</option>
+              <option value="marca2">Marca 2</option>
+              <option value="marca3">Marca 3</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="categoria">Categoría:</label>
+            <select class="form-select" id="categoria">
+              <option value="categoria1">Categoría 1</option>
+              <option value="categoria2">Categoría 2</option>
+              <option value="categoria3">Categoría 3</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="nombre_producto">Nombre del producto:</label>
+            <input type="text" class="form-control" id="nombre_producto" placeholder="Ingrese el nombre del producto">
+          </div>
+          <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+      </div>
+
+      <div class="modal" id="myModal">​
+        <div class="modal-dialog">​
+          <div class="modal-content">​
+            <form accept-charset="UTF-8" [formGroup]="formUser" (ngSubmit)="addproductos()">
+              <div class="modal-header">
+                <h4 class="modal-title">Adicionar Productos</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3 mt-3">
+                  <label for="codigo" class="form-label">Código:</label>
+                  <input type="text" class="form-control" id="codigo" placeholder="Ingrese codigo" name="codigo"
+                    formControlName="codigo">
+
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="nombre" class="form-label">Nombre:</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" name="nombre"
+                    formControlName="nombre_producto">
+
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="stock" class="form-label">Stock</label>
+                  <input type="number" class="form-control" id="stock"
+                    name="stock" formControlName="stock">
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="descripcion" class="form-label">Descripción:</label>
+                  <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripción"
+                    name="descripcion" formControlName="descripcion_producto">
+
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="precio" class="form-label">Precio</label>
+                  <input type="number" class="form-control" id="precio"
+                    name="precio" formControlName="precio">
+                </div>
+
+                <div class="mb-3 mt-3">
+                  <label for="marca" class="form-label">Marca</label>
+                  <select class="form-select" id="marca" name="marca" formControlName="marca">
+                    <option value="" disabled selected>Selecciona una marca</option>
+                    <option *ngFor="let marca of Marcas" [value]="marca.id">{{ marca.nombre }}</option>
+                  </select>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label for="categoria" class="form-label">Categoria</label>
+                  <select class="form-select" id="categoria" name="categoria" formControlName="categoria">
+                    <option value="" disabled selected>Selecciona una marca</option>
+                    <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-info btn-sm">Adicionar</button>
+              </div>
+            </form>​
+          </div>​
+        </div>​
+      </div>
+
+      <!-- Columna de Tabla de Productos -->
+      <div class="col-md-9">
+        <h5>Lista de Productos</h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#myModal">
+            <i class="fas fa-plus"></i> Insertar
+          </button>
+
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Cod_Producto</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí puedes incluir filas de datos dinámicamente con Angular -->
+              <tr *ngFor="let producto of productos">
+                <td>{{ producto.codigo }}</td>
+                <td>{{ producto.nombre_producto }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.stock }}</td>
+                <td>{{ producto.descripcion_producto }}</td>
+
+                <td>
+
+                  <button class="btn" name="editar" [routerLink]="['editProductos', producto.codigo]">
+                    <i class="fa-regular fa-pen-to-square" style="color:green"></i>
+                    Editar
+                  </button>
+
+                  <button *ngIf="producto" class="btn btn-danger m-1" (click)="delete_producto(producto.codigo)">
+                    <i class="fas fa-eye">Eliminar</i>
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

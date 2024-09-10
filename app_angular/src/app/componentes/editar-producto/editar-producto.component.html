@@ -1,0 +1,47 @@
+    <h1>Edición de Productos</h1>
+    <form [formGroup]="formUser" (ngSubmit)="editarProducto()">
+        <div class="mb-3 mt-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" name="nombre"
+            formControlName="nombre_producto">
+            
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripción"
+            name="descripcion" formControlName="descripcion">
+        
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" 
+            name="stock" formControlName="stock">                
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="precio" 
+            name="precio" formControlName="precio">                
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="precio" 
+            name="precio" formControlName="precio">                
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="marca" class="form-label">Marca</label>
+            <select class="form-select" id="marca" name="marca" formControlName="marca">
+            <option value="" disabled selected>Selecciona una marca</option>
+            <option *ngFor="let marca of marcas" [value]="marca.id">{{ marca.nombre }}</option>
+            </select>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="marca" class="form-label">Categoria</label>
+            <select class="form-select" id="categoria" name="categoria" formControlName="categoria">
+            <option value="" disabled selected>Selecciona una marca</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</option>
+            </select>
+        </div>
+
+    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-info btn-sm">Editar</button>
+    </form>

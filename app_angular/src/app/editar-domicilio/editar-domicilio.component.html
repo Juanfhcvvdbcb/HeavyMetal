@@ -1,0 +1,45 @@
+<form [formGroup]="formDomicilio" (ngSubmit)="editarDomicilio()">
+
+  <div class="mb-3 mt-3">
+        <label for="detalleCompra" class="form-label">Detalle de Compra:</label>
+        <select class="form-select" id="detalleCompra" name="detalleCompra" formControlName="ID_DetalleCompra">
+            <option value="" disabled selected>Selecciona un detalle de compra</option>
+            <option *ngFor="let detalle of detallesCompra" [value]="detalle.id">{{ detalle.nombre }}</option>
+        </select>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="valorDomicilio" class="form-label">Valor Domicilio:</label>
+        <input type="number" class="form-control" id="valorDomicilio" placeholder="Ingrese Valor Domicilio" name="valorDomicilio"
+        formControlName="valorDomicilio">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="estado" class="form-label">Estado:</label>
+      <select class="form-select" id="estado" name="estado" formControlName="id_estado">
+          <option value="" disabled selected>Selecciona un estado</option>
+          <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nombre }}</option>
+      </select>
+  </div>
+    <div class="mb-3 mt-3">
+        <label for="fechaEntrega" class="form-label">Fecha de Entrega:</label>
+        <input type="datetime-local" class="form-control" id="fechaEntrega" placeholder="Ingrese Fecha de Entrega"
+        name="fechaEntrega" formControlName="fechaEntrega">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="observacionesDomiciliario" class="form-label">Observaciones del Domiciliario:</label>
+        <textarea class="form-control" id="observacionesDomiciliario" placeholder="Ingrese Observaciones del Domiciliario"
+        name="observacionesDomiciliario" formControlName="observacionesDomiciliario"></textarea>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="observacionesCliente" class="form-label">Observaciones del Cliente:</label>
+        <textarea class="form-control" id="observacionesCliente" placeholder="Ingrese Observaciones del Cliente"
+        name="observacionesCliente" formControlName="observacionesCliente"></textarea>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="calificacion" class="form-label">Calificación:</label>
+        <input type="number" class="form-control" id="calificacion"
+        name="calificacion" formControlName="calificacion">
+    </div>
+
+    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn btn-info btn-sm">Editar</button>
+</form>

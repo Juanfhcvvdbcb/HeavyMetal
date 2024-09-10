@@ -1,0 +1,105 @@
+<h1 class="text-center mt-3">Panel de Marcas</h1>
+
+<!--<div class="input-group mb-3 w-50 mx-auto">
+  <input type="text" class="form-control" placeholder="Indique el nombre de la marca que desea buscar"
+    aria-label="Buscar marca" aria-describedby="button-addon4">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon4">
+    <i class="fas fa-search"></i>
+  </button>
+</div> -->
+
+<div class="d-flex justify-content-between align-items-center">
+  <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#myModal">
+    <i class="fas fa-plus"></i> Insertar
+  </button>
+
+</div>
+
+
+<!--
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .registration-form {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>-->
+
+<!-- <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="registration-form">-->
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">​
+    <div class="modal-content">​
+      <form accept-charset="UTF-8" [formGroup]="formUser" (ngSubmit)="addmarcas()">
+        <div class="modal-header">
+          <h4 class="modal-title">Adicionar Marca</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 mt-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" name="nombre"
+              formControlName="nombre">
+
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripción"
+              name="descripcion" formControlName="descripcion">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-info btn-sm">Adicionar</button>
+        </div>
+      </form>​
+    </div>​
+  </div>​
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let marca of marcas">
+      <td>{{ marca.id }}</td>
+      <td>{{ marca.nombre }}</td>
+      <td>{{ marca.descripcion }}</td>
+      <td>
+
+        <button class="btn" name="editar" [routerLink]="['editMarcas', marca.id]">
+          <i class="fa-regular fa-pen-to-square" style="color:green"></i>
+          Editar
+        </button>
+
+        <button *ngIf="marca" class="btn btn-danger m-1" (click)="delete_marca(marca.id)">
+          <i class="fas fa-eye">Eliminar</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<router-outlet></router-outlet>

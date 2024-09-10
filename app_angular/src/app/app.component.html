@@ -1,0 +1,3 @@
+<!-- Condicionalmente renderiza el HeaderComponent basado en la ruta actual -->
+<app-header *ngIf="!currentRoute.includes('/login')"></app-header>
+<router-outlet></router-outlet>

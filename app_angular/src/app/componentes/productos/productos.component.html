@@ -1,0 +1,155 @@
+<!-- Botón para abrir el modal -->
+<div class="d-flex justify-content-between align-items-center">
+  <button type="button" class="btn btn-success mb-3" (click)="openModal()">
+    <i class="fas fa-plus"></i> Insertar
+  </button>
+</div>
+
+<!-- Modal para registro de productos -->
+<div id="modal" class="modal" tabindex="-1" (click)="closeModal($event)">
+  <div class="modal-dialog modal-dialog-centered" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <form [formGroup]="formUser" (ngSubmit)="addproductos()">
+        <div class="modal-header">
+          <h4 class="modal-title">Adicionar Productos</h4>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Campos del formulario -->
+          <div class="mb-3">
+            <label for="codigo" class="form-label">Código:</label>
+            <input type="text" class="form-control" id="codigo" placeholder="Ingrese código" formControlName="codigo">
+            <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)" class="text-danger">
+              <div *ngIf="codigo.errors?.['required']">Código es requerido.</div>
+            </div>
+
+
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre_producto">
+            <div *ngIf="nombre_producto.invalid && (nombre_producto.dirty || nombre_producto.touched)" class="text-danger">
+              <div *ngIf="nombre_producto.errors?.['required']">Nombre es requerido.</div>
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="stock" class="form-label">Stock:</label>
+            <input type="number" class="form-control" id="stock" formControlName="stock">
+            <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="text-danger">
+              <div *ngIf="stock.errors?.['required']">Stock es requerido.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripción" formControlName="descripcion_producto">
+            <div *ngIf="descripcion_producto.invalid && (descripcion_producto.dirty || descripcion_producto.touched)" class="text-danger">
+              <div *ngIf="descripcion_producto.errors?.['required']">Descripción es requerida.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="precio" class="form-label">Precio:</label>
+            <input type="number" class="form-control" id="precio" formControlName="precio">
+            <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="text-danger">
+              <div *ngIf="precio.errors?.['required']">Precio es requerido.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="marca" class="form-label">Marca:</label>
+            <select class="form-select" id="marca" formControlName="marca">
+              <option value="" disabled selected>Seleccione una marca</option>
+              <option *ngFor="let marca of Marcas" [value]="marca.id">{{ marca.nombre_marca }}</option>
+            </select>
+            <div *ngIf="marca.invalid && (marca.dirty || marca.touched)" class="text-danger">
+              <div *ngIf="marca.errors?.['required']">Marca es requerida.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="categoria" class="form-label">Categoría:</label>
+            <select class="form-select" id="categoria" formControlName="categoria">
+              <option value="" disabled selected>Seleccione una categoría</option>
+              <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</option>
+            </select>
+            <div *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)" class="text-danger">
+              <div *ngIf="categoria.errors?.['required']">Categoría es requerida.</div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+   
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-info btn-sm">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal para insertar imágenes -->
+<div class="modal" id="imageModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Insertar Imágenes</h2>
+        <button type="button" class="close" (click)="closeModalImages()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label for="imageUpload">Subir imágenes:</label>
+        <input type="file" id="imageUpload[0]" accept="image/jpeg, image/png, image/gif" multiple>
+      </div>
+      <div class="modal-body">
+        <label for="imageUpload">Subir imágenes:</label>
+        <input type="file" id="imageUpload[1]" accept="image/jpeg, image/png, image/gif" multiple>
+      </div>
+      <div class="modal-body">
+        <label for="imageUpload">Subir imágenes:</label>
+        <input type="file" id="imageUpload[2]" accept="image/jpeg, image/png, image/gif" multiple>
+      </div>
+      <div class="modal-body">
+        <label for="imageUpload">Subir imágenes:</label>
+        <input type="file" id="imageUpload[3]" accept="image/jpeg, image/png, image/gif" multiple>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="addImage()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Cod_Producto</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.codigo }}</td>
+        <td>{{ producto.nombre_producto }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>{{ producto.descripcion_producto }}</td>
+        <td>{{ producto.categoria.nombre }}</td>
+        <td>
+          <button type="button" class="btn btn-info btn-sm me-1">
+          Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

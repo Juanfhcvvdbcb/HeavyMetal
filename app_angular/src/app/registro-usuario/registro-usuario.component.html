@@ -1,0 +1,71 @@
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="registration-form">
+        <h2 class="text-center mb-4">REGISTRARSE</h2>
+        <form accept-charset="UTF-8" [formGroup]="formUser" (ngSubmit)="addusuarios()">
+          <div class="modal-body">
+            <div class="row align-vertical">
+              <div class="col-md-6 form-column">
+                <div class="form-group mb-4">
+                  <label for="tipo_identificacion" class="form-label">Tipo de documento</label>
+                  <select class="form-select" id="tipo_identificacion" name="tipo_identificacion" formControlName="tipo_identificacion">
+                    <option value="" disabled selected>Selecciona un tipo de documento</option>
+                    <option *ngFor="let ti of tis" [value]="ti.id_tipo">{{ ti.descripcion }}</option>
+                  </select>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="id_usuario" class="form-label">Número de documento:</label>
+                  <input type="number" class="form-control" id="id_usuario" placeholder="Ingrese número de documento" name="id_usuario" formControlName="id_usuario">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" name="nombre" formControlName="nombre">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="apellido" class="form-label">Apellido:</label>
+                  <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" name="apellido" formControlName="apellido">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="correo_electronico" class="form-label">Correo electrónico:</label>
+                  <input type="email" class="form-control" id="correo_electronico" placeholder="Ingrese correo_electronico" name="correo_electronico" formControlName="correo_electronico">
+                </div>
+              </div>
+              <div class="col-md-6 form-column">
+                <div class="form-group mb-4">
+                  <label for="Contraseña_Encriptada" class="form-label">Contraseña:</label>
+                  <input type="password" class="form-control" id="Contraseña_Encriptada" placeholder="Ingrese Contraseña" name="Contraseña_Encriptada" formControlName="Contraseña_Encriptada">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="direccion" class="form-label">Direccion:</label>
+                  <input type="direccion" class="form-control" id="direccion" placeholder="Ingrese direccion" name="direccion" formControlName="direccion">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="telefono" class="form-label">Telefono:</label>
+                  <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" formControlName="telefono">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="fecha_registro" class="form-label">Fecha Registro:</label>
+                  <input type="datetime-local" class="form-control" id="fecha_registro" placeholder="Ingrese fecha_registro" name="fecha_registro" formControlName="fecha_registro">
+                </div>
+                <div class="form-group mb-4">
+                  <label for="id_ciudad" class="form-label">Ciudad</label>
+                  <select class="form-select" id="id_ciudad" name="id_ciudad" formControlName="id_ciudad">
+                    <option value="" disabled selected>Selecciona Ciudad</option>
+                    <option *ngFor="let id_ciudad of id_ciudades" [value]="id_ciudad.id_ciudad">{{ id_ciudad.nombre }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="submit" class="btn btn-info btn-sm" (click)="addusuarios()">Registrarse</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

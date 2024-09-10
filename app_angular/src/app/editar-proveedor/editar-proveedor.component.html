@@ -1,0 +1,27 @@
+<h1>Edición de Productos</h1>
+<form [formGroup]="formUser"(ngSubmit)="editarProveedor()">
+
+  <div class="mb-3 mt-3">
+    <label for="razon_social" class="form-label">razon_social:</label>
+    <input type="text" class="form-control" id="razon_social" placeholder="Ingrese razon_social "
+      name="razon_social" formControlName="razon_social">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="telefono" class="form-label">telefono:</label>
+    <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono "
+      name="telefono" formControlName="telefono">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="correo" class="form-label">correo:</label>
+    <input type="email" class="form-control" id="correo" placeholder="Ingrese correo "
+      name="correo" formControlName="correo">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="direccion " class="form-label">direccion :</label>
+    <input type="text" class="form-control" id="direccion " placeholder="Ingrese direccion  "
+      name="direccion " formControlName="direccion">
+  </div>
+  <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+  <button type="submit" class="btn btn-info btn-sm">Editar</button>
+
+</form>

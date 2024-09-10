@@ -1,0 +1,27 @@
+<!-- carrito.component.html -->
+
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>Nombre del Producto</th>
+      <th>Marca</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productos">
+      <td><a href="#">{{ producto.nombre_producto }}</a></td>
+      <td>{{ producto.marca }}</td>
+      <td>{{ producto.precio }}</td>
+      <td>{{ producto.cantidad }}</td>
+      <td><button (click)="eliminarProducto(producto)">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Botón Comprar -->
+<div class="button-container">
+  <button class="buy-button" (click)="goToDomicilios()">Comprar</button>
+</div>

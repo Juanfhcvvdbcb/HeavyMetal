@@ -1,0 +1,70 @@
+/* carrito.component.scss */
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.product-table th, .product-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.product-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.product-table td {
+  border-top: 1px solid #ddd;
+}
+
+.product-table img {
+  width: 50px;
+  height: 50px;
+}
+
+.product-table a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.product-table button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.product-table button:hover {
+  background-color: #c82333;
+}
+
+.product-table button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Estilo para el botón Comprar */
+.button-container {
+  text-align: center; /* Centra el botón en línea */
+  margin-top: 20px;
+}
+
+.buy-button {
+  background-color: #007bff; /* Color azul */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+  background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}

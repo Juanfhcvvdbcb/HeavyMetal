@@ -1,0 +1,37 @@
+<h1 class="text-center mt-3">Panel de ventas</h1>
+<div class="input-group mb-3 w-50 mx-auto">
+  <input type="text" class="form-control" placeholder="Indique el nombre de la venta que desea buscar"
+    aria-label="Buscar ventas" aria-describedby="button-addon4">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon4">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID_Venta</th>
+      <th>ID_Domicilio</th>
+      <th>Total_Compra</th>
+      <th>ID_MedioPago</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let venta of ventas">
+      <td>{{ venta.id_venta }}</td>
+      <td>{{ venta.id_domicilio }}</td>
+      <td>{{ venta.total_compra }}</td>
+      <td>{{ venta.id_mediopago }}</td>
+      <td>
+
+        <button *ngIf="venta" class="btn btn-danger m-1" (click)="delete_Ventas(venta.id_venta)">
+          <i class="fas fa-eye">Eliminar</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<router-outlet></router-outlet>
+
+
+

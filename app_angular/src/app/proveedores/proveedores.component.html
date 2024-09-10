@@ -1,0 +1,99 @@
+
+
+<h1 class="text-center mt-3">Panel de Proveedores</h1>
+<div class="input-group mb-3 w-50 mx-auto">
+  <input type="text" class="form-control" placeholder="Indique el nombre del proveedor que desea buscar"
+    aria-label="Buscar proveedores" aria-describedby="button-addon4">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon4">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+<div class="d-flex justify-content-between align-items-center">
+  <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#myModal">
+    <i class="fas fa-plus"></i> Insertar
+  </button>
+
+</div>
+
+
+<div class="modal" id="myModal">​
+  <div class="modal-dialog">​
+    <div class="modal-content">​
+      <form accept-charset="UTF-8" [formGroup]="formUser" (ngSubmit)="addproveedores()">
+        <div class="modal-header">
+          <h4 class="modal-title">Adicionar Proveedores</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 mt-3">
+            <label for="nit" class="form-label">nit:</label>
+            <input type="number" class="form-control" id="nit" placeholder="Ingrese nit" name="nit"
+              formControlName="nit">
+
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="razon_social" class="form-label">razon_social:</label>
+            <input type="text" class="form-control" id="razon_social" placeholder="Ingrese razon_social "
+              name="razon_social" formControlName="razon_social">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="telefono" class="form-label">telefono:</label>
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono "
+              name="telefono" formControlName="telefono">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="correo" class="form-label">correo:</label>
+            <input type="email" class="form-control" id="correo" placeholder="Ingrese correo "
+              name="correo" formControlName="correo">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="direccion " class="form-label">direccion :</label>
+            <input type="text" class="form-control" id="direccion " placeholder="Ingrese direccion  "
+              name="direccion " formControlName="direccion">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-info btn-sm">Adicionar</button>
+        </div>
+      </form>​
+    </div>​
+  </div>​
+</div>​
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>NIT</th>
+      <th>RAZON_SOCIAL</th>
+      <th>TELEFONO</th>
+      <th>CORREO</th>
+      <th>DIRECCION</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let proveedor of proveedores">
+      <td>{{ proveedor.nit }}</td>
+      <td>{{ proveedor.razon_social }}</td>
+      <td>{{ proveedor.telefono }}</td>
+      <td>{{ proveedor.correo }}</td>
+      <td>{{ proveedor.direccion }}</td>
+      <td>
+
+        <button class="btn" name="editar" [routerLink]="['editarProveedores', proveedor.nit]">
+          <i class="fa-regular fa-pen-to-square" style="color:green"></i>
+          Editar
+        </button>
+
+        <button *ngIf="proveedor" class="btn btn-danger m-1" (click)="delete_Proveedores(proveedor.nit)">
+          <i class="fas fa-eye">Eliminar</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<header class="header">
+  <div class="header-left">
+    <button class="menu-btn" (click)="toggleMenu()"><i class="fas fa-bars"></i></button>
+    <span class="logo">Heavy Metal</span>
+  </div>
+  <div class="header-center">
+    <div class="search-container">
+      <div class="search-icon"><i class="fas fa-search"></i></div>
+      <input type="text" class="search-bar" placeholder="Buscar Producto">
+    </div>
+  </div>
+
+  <div class="header-right">
+    <button><i class="fas fa-envelope"></i></button>
+    <button><i class="fas fa-bell"></i></button>
+    <div class="profile" (click)="toggleDropdown()">
+      <img src="assets/profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+      <span class="profile-name">David Greymaax</span>
+      <span class="arrow"><i class="fas fa-caret-down"></i></span>
+      <div class="dropdown-content" id="dropdown">
+        <a href="#">Perfil</a>
+        <a href="#">Salir</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <div class="profil-info">
+    <img src="assets/profile-pic.jpg" alt="Profile Picture" class="profil-pic">
+    <span class="profil-name">David Greymaax</span>
+  </div>
+  <a href="#"><i class="fas fa-cogs"></i> ERRAMIENTAS MANUALES <span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-calendar-alt"></i> HERRAMIENTAS ELECTRICAS <span class="fas fa-caret-right"></span></a>
+  <a href="/ventas"><i class="fas fa-calendar-alt"></i> FERRETERIA <span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-cogs"></i> MATERIALES DE CONTRUCCIÓN<span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-calendar-alt"></i> PLOMERIA <span class="fas fa-caret-right"></span></a>
+  <a href="/ventas"><i class="fas fa-calendar-alt"></i> ELECTRICIDAD <span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-cogs"></i> PINTURAS Y ACCESORIOS<span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-calendar-alt"></i> SEGURIDAD <span class="fas fa-caret-right"></span></a>
+  <a href="/ventas"><i class="fas fa-calendar-alt"></i> JARDINERIA <span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-cogs"></i> ADHESIVOS Y SELLADORES<span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-calendar-alt"></i> ACCESORIOS Y SUMINISTROS <span class="fas fa-caret-right"></span></a>
+  <a href="#"><i class="fas fa-question-circle"></i> Ayuda <span class="fas fa-caret-right"></span></a>

@@ -1,0 +1,35 @@
+<div class="producto-detalle-container">
+  <div class="producto-detalle-card">
+    <div class="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let imagen of imagenes; let i = index" class="carousel-item" [class.active]="i === currentIndex">
+          <img [src]="imagen" alt="Imagen del producto">
+        </div>
+      </div>
+      <button class="carousel-control-prev" (click)="prev()">&#10094;</button>
+      <button class="carousel-control-next" (click)="next()">&#10095;</button>
+    </div>
+    
+    <h1>{{ producto.nombre_producto }}</h1>
+    <p>{{ producto.descripcion_producto }}</p>
+    <h2>${{ producto.precio }}</h2>
+
+    <!-- Mostrar formulario según el estado de isProcedenteInsertar -->
+    <ng-container *ngIf="isProcedenteInsertar === true ; else otroFormulario">
+      <form class="form-container">
+        <label for="cantidad_2">Cantidad:</label>
+        <input type="number" id="cantidad_2" name="cantidad" [(ngModel)]="cantidad2" required>
+        <button type="button" (click)="insersiones()">Añadir al Carrito</button>
+      </form>
+    </ng-container>
+
+    <ng-template #otroFormulario>
+      <form class="form-container">
+        <label for="cantidad" (click)="editarCantidad()">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" [(ngModel)]="cantidad" required>
+        <button type="submit">+</button>
+      </form>
+    </ng-template>
+
+  </div>
+</div>
